@@ -24,6 +24,13 @@ always @(*) begin
     Overflow = (~(A[7] ^ B[7])) & (A[7] ^ ALU_Out[7]);
     end
 
+    4'b0001: begin
+    {CarryOut, ALU_Out} = A - B;
+
+    Overflow = (A[7] ^ B[7]) &
+               (A[7] ^ ALU_Out[7]);
+    end
+
     default: begin
     ALU_Out = 8'b00000000;
     end
