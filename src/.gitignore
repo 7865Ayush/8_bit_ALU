@@ -1,0 +1,18 @@
+# Icarus Verilog
+*.out
+*.vcd
+
+# GTKWave
+*.gtkw
+
+# Vivado
+*.jou
+*.log
+*.str
+*.cache/
+*.runs/
+*.sim/
+*.Xil/
+
+# VS Code
+.vscode/
