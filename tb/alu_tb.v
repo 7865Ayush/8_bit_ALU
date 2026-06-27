@@ -36,22 +36,35 @@ initial begin
     
 
     
-    // Test 1 : Addition
-    A = 20;
-    B = 10;
-    ALU_Sel = 4'b0000;
-    #10;
+    // AND
+A = 8'b11001100;
+B = 8'b10101010;
+ALU_Sel = 4'b0010;
+#10;
+$display("----------------------------");
+$display("A=%d B=%d Opcode=%b Result=%d",
+          A,B,ALU_Sel,ALU_Out);
 
-    $display("A=%d B=%d Result=%d", A, B, ALU_Out);
+// OR
+ALU_Sel = 4'b0011;
+#10;
+$display("----------------------------");
+$display("A=%d B=%d Opcode=%b Result=%d",
+          A,B,ALU_Sel,ALU_Out);
 
-    
+// XOR
+ALU_Sel = 4'b0100;
+#10;
+$display("----------------------------");
+$display("A=%d B=%d Opcode=%b Result=%d",
+          A,B,ALU_Sel,ALU_Out);
 
-    // Test 2 : Subtraction
-    A = 20;
-    B = 10;
-    ALU_Sel = 4'b0001;
-    #10;
-    $display("A=%d B=%d Result=%d", A, B, ALU_Out);
+// NOT
+ALU_Sel = 4'b0101;
+#10;
+$display("----------------------------");
+$display("A=%d B=%d Opcode=%b Result=%d",
+          A,B,ALU_Sel,ALU_Out);
 
     $finish;
 

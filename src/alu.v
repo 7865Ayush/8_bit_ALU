@@ -31,6 +31,22 @@ always @(*) begin
                (A[7] ^ ALU_Out[7]);
     end
 
+    4'b0010: begin
+    ALU_Out = A & B;
+    end
+
+    4'b0011: begin
+    ALU_Out = A | B;
+    end
+    
+    4'b0100: begin
+    ALU_Out = A ^ B;
+    end
+
+    4'b0101: begin
+    ALU_Out = ~A;
+    end
+
     default: begin
     ALU_Out = 8'b00000000;
     end
