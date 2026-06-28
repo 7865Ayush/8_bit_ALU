@@ -34,29 +34,13 @@ end
 initial begin
 
     
-
-    
-    // AND
-A = 8'b11001100;
-B = 8'b10101010;
-ALU_Sel = 4'b0010;
+A = 8'd10;
+B = 8'd20;
+ALU_Sel = 4'b1101;
 #10;
-$display("----------------------------");
-$display("A=%d B=%d Opcode=%b Result=%d",
+  
+$display("A=%d  B=%d  Opcode=%b Result=%d",
           A,B,ALU_Sel,ALU_Out);
-
-// Logical Left Shift
-A = 8'b00110110;
-ALU_Sel = 4'b0110;
-#10;
-$display("A=%d  Opcode=%b Result=%d",
-          A,ALU_Sel,ALU_Out);
-
-// Logical Right Shift
-ALU_Sel = 4'b0111;
-#10;
-$display("A=%d  Opcode=%b Result=%d",
-          A,ALU_Sel,ALU_Out);
                                                                                     
 
     $finish;

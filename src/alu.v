@@ -9,6 +9,25 @@ module alu (
     output Zero,
     output Negative
 );
+//=========================
+// ALU Operation Codes
+//=========================
+
+localparam ADD        = 4'b0000;
+localparam SUB        = 4'b0001;
+localparam AND_OP     = 4'b0010;
+localparam OR_OP      = 4'b0011;
+localparam XOR_OP     = 4'b0100;
+localparam NOT_OP     = 4'b0101;
+localparam SHL        = 4'b0110;
+localparam SHR        = 4'b0111;
+localparam INC        = 4'b1000;
+localparam DEC        = 4'b1001;
+localparam CMP        = 4'b1010;
+localparam PASS_A     = 4'b1011;
+localparam PASS_B     = 4'b1100;
+localparam MUL        = 4'b1101;
+localparam PRE        = 4'b1110;
 
 always @(*) begin
 
@@ -18,43 +37,73 @@ always @(*) begin
 
     case(ALU_Sel)
 
-    4'b0000: begin
+    ADD: begin
     {CarryOut, ALU_Out} = A + B;
 
     Overflow = (~(A[7] ^ B[7])) & (A[7] ^ ALU_Out[7]);
     end
 
-    4'b0001: begin
+    SUB: begin
     {CarryOut, ALU_Out} = A - B;
 
     Overflow = (A[7] ^ B[7]) &
                (A[7] ^ ALU_Out[7]);
     end
 
-    4'b0010: begin
+    AND_OP: begin
     ALU_Out = A & B;
     end
 
-    4'b0011: begin
+    OR_OP: begin
     ALU_Out = A | B;
     end
     
-    4'b0100: begin
+    XOR_OP: begin
     ALU_Out = A ^ B;
     end
 
-    4'b0101: begin
+    NOT_OP: begin
     ALU_Out = ~A;
     end
 
-    4'b0110: begin
+    SHL: begin
     ALU_Out = A << 1;
     end
 
-    4'b0111: begin
+    SHR: begin
     ALU_Out = A >> 1;
     end
 
+    INC: begin
+    ALU_Out = A + 1;
+    end
+
+    DEC: begin
+    ALU_Out = A - 1;
+    end
+
+    CMP: begin
+    if(A>B)
+        ALU_Out = A;
+    else
+        ALU_Out = B;
+    end
+
+    PASS_A: begin
+    ALU_Out = A;
+    end
+
+    PASS_B: begin
+    ALU_Out = B;
+    end
+
+    MUL: begin
+    ALU_Out = A*B;
+    end
+
+    PRE: begin
+    ALU_Out = 8'b11111111;
+    end
     default: begin
     ALU_Out = 8'b00000000;
     end
