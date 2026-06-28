@@ -45,26 +45,19 @@ $display("----------------------------");
 $display("A=%d B=%d Opcode=%b Result=%d",
           A,B,ALU_Sel,ALU_Out);
 
-// OR
-ALU_Sel = 4'b0011;
+// Logical Left Shift
+A = 8'b00110110;
+ALU_Sel = 4'b0110;
 #10;
-$display("----------------------------");
-$display("A=%d B=%d Opcode=%b Result=%d",
-          A,B,ALU_Sel,ALU_Out);
+$display("A=%d  Opcode=%b Result=%d",
+          A,ALU_Sel,ALU_Out);
 
-// XOR
-ALU_Sel = 4'b0100;
+// Logical Right Shift
+ALU_Sel = 4'b0111;
 #10;
-$display("----------------------------");
-$display("A=%d B=%d Opcode=%b Result=%d",
-          A,B,ALU_Sel,ALU_Out);
-
-// NOT
-ALU_Sel = 4'b0101;
-#10;
-$display("----------------------------");
-$display("A=%d B=%d Opcode=%b Result=%d",
-          A,B,ALU_Sel,ALU_Out);
+$display("A=%d  Opcode=%b Result=%d",
+          A,ALU_Sel,ALU_Out);
+                                                                                    
 
     $finish;
 

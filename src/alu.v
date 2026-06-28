@@ -47,6 +47,14 @@ always @(*) begin
     ALU_Out = ~A;
     end
 
+    4'b0110: begin
+    ALU_Out = A << 1;
+    end
+
+    4'b0111: begin
+    ALU_Out = A >> 1;
+    end
+
     default: begin
     ALU_Out = 8'b00000000;
     end
